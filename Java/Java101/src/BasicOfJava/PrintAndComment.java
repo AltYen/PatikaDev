@@ -1,3 +1,5 @@
+package BasicOfJava;
+
 /**
  * @author Altan Yenigun, 07.07.2023
  */
