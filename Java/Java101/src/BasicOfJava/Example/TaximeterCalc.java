@@ -12,9 +12,5 @@ public class TaximeterCalc {
         ucret = (km*kmTutar) + ucret; //ucret += (km*kmTutar)
         ucret = ucret < 20 ? 20 : ucret;
         System.out.println("Ucret = " + ucret);
-
-
-
-
     }
 }
