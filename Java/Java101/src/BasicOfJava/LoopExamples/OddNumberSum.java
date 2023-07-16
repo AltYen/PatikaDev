@@ -30,7 +30,7 @@ public class OddNumberSum {
             if((number % 2 == 0) && (number % 4 == 0))
                 sum+=number;
 
-        }while(number % 2 == 0);
+        }while(!(number % 2 == 1));
 
         System.out.println(sum);
 
