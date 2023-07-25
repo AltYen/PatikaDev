@@ -2,6 +2,7 @@ package BasicOfJava.Classes;
 
 public class Main {
     public static void main(String[] args) {
+
         Car audi = new Car(); // Car sınıfından bir nesne üretiyoruz.
         //bir nesnenin niteliklerine nasıl erişim sağlanır.
         audi.model="A3";
