@@ -1,9 +1,10 @@
 package BasicOfJava.Classes;
 
 //Sınıflar nesneler üretip,oluşturabilmek için üretilmiş şablonlardır(Modellerdir).
+//Nesneler bu şablonlardan üretilen fiziksel yapılardır.(Sınıflardan ürettiğimiz yapılara nesne denir.)
 class Car {
     //Nitelikler değişkenler ile belirlenir. Değişkenler sınıfın en başında tanımlanır.
-    String type;
+    String type = "Sedan";
     String model;
     String color;
     int speed;
@@ -13,6 +14,9 @@ class Car {
     void increaseSpeed(int increment){
         if((speed+increment)<speedLimit){
             speed+=increment;
+        }else{
+            speed=speedLimit;
+            System.out.println("Maksimum Hıza ulaştınız " + speed );
         }
     }
 
@@ -23,7 +27,7 @@ class Car {
     }
 
     void printSpeed(){
-        System.out.println("Hızınız : " + speed);
+        System.out.println(model + " Hızınız : " + speed);
     }
 
 }
