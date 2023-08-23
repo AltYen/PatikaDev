@@ -23,6 +23,7 @@ WHERE rental_rate =
 );
 
 --4.
+-- en çok işlem yapan müşterileri yazma,
 SELECT * FROM customer
 WHERE customer_id = ANY
 (
@@ -30,9 +31,15 @@ WHERE customer_id = ANY
 	GROUP BY customer_id
 	HAVING COUNT(*) = 
 	(
-		SELECT MAX(count) FROM (
+		SELECT MAX(Count) FROM (
 			SELECT COUNT(*) FROM payment
 			GROUP BY customer_id
 		) AS "Count"
 	)	
 );
+
+-- müşterileri işlem sayısına göre büyükten küçüğe sıralama
+SELECT first_name,last_name,COUNT(*) FROM customer
+INNER JOIN payment ON payment.customer_id = customer.customer_id
+GROUP BY customer.first_name,customer.last_name
+ORDER BY COUNT(*) DESC;
