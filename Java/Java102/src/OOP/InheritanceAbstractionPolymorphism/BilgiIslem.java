@@ -1,4 +1,4 @@
-package OOP.Inheritance;
+package OOP.InheritanceAbstractionPolymorphism;
 
 public class BilgiIslem extends Memur {
     private String gorev;

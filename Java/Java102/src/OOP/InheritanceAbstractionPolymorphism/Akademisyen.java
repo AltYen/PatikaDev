@@ -1,4 +1,4 @@
-package OOP.Inheritance;
+package OOP.InheritanceAbstractionPolymorphism;
 
 public abstract class Akademisyen extends Calisan{ // herhangi bir sınıftan kalıtım yapmanın yöntemi
 

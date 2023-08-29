@@ -1,4 +1,4 @@
-package OOP.Inheritance;
+package OOP.InheritanceAbstractionPolymorphism;
 
 public class GuvenlikGorevlisi extends Memur {
     private String belge;

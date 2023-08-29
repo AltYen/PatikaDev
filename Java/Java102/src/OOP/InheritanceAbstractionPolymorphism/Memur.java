@@ -1,4 +1,4 @@
-package OOP.Inheritance;
+package OOP.InheritanceAbstractionPolymorphism;
 
 public class Memur extends Calisan{
     private String departman;

@@ -1,4 +1,4 @@
-package OOP.Inheritance;
+package OOP.InheritanceAbstractionPolymorphism;
 
 public class Main {
     public static void main(String[] args) {

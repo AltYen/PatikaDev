@@ -1,4 +1,4 @@
-package OOP.Inheritance;
+package OOP.InheritanceAbstractionPolymorphism;
 
 public class OgretimGorevlisi extends Akademisyen{
     private String kapiNo;
