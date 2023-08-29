@@ -24,9 +24,8 @@ public class Main {
         p1.showName();
         //Player.showName(); eğer showName methodu static tanımlanırsa.
     }
-
-     */
-
+    */
+    /*
     public static void main(String[] args) {
         Course mat = new Course("Matematik","MAT-101",70);
         Course fizik = new Course("Fizik","FZK-101",20);
@@ -41,5 +40,16 @@ public class Main {
 
         Calculate.calcAverage(notlar); // o yüzden calcAverage methodunu static olarak tanımlayıp, herhangi bir nesne üretmeden direk sınıf üzerinden bu şekilde çağırabiliriz.
         Calculate.calcAverage(dersler);
+    }
+     */
+
+    public static void main(String[] args) {
+        System.out.println("1.Program başladı.");
+        User u1 = new User("Mustafa Çetindağ");
+        User u2 = new User("Patika Dev");
+        User u3 = new User("Kodluyoruz");
+
+        System.out.println("Counter Son Deger : " + User.counter);
+        System.out.println("Program Bitti");
     }
 }
