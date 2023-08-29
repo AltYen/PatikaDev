@@ -11,8 +11,14 @@ public class Main {
         //m1.calis();
 
         OgretimGorevlisi o1= new OgretimGorevlisi("Mahmut Cetindağ","0","mahmut@patika.dev","CENG","Docent","110");
+        /*
+        //Method Overloading Örneği
         o1.giris(); // hem akademisyen hemde calisan sınıfına erişebilir.
+        o1.giris("10:00");
+        o1.giris("10:00","18:00");
         o1.derseGir();
+        */
+        o1.giris();
 
         GuvenlikGorevlisi gg1 = new GuvenlikGorevlisi("Ahmet Hakan","11","asfaf@gmail.com","CENG","12:00-00:00","A1");
         System.out.println(gg1.getMesai());
