@@ -1,6 +1,6 @@
 package OOP.Inheritance;
 
-public class Akademisyen extends Calisan{ // herhangi bir sınıftan kalıtım yapmanın yöntemi
+public abstract class Akademisyen extends Calisan{ // herhangi bir sınıftan kalıtım yapmanın yöntemi
 
     private String bolum;
     private String unvan;
@@ -30,9 +30,8 @@ public class Akademisyen extends Calisan{ // herhangi bir sınıftan kalıtım y
         this.unvan = unvan;
     }
 
-    public void derseGir(){
-        System.out.println(this.getAdSoyad() + " dersi giriş yaptı !");
-    }
+    //abstract metodların bodysi olamaz!
+    public abstract void derseGir(String dersSaati);
 
     // method overriding
     @Override

@@ -19,4 +19,7 @@ public class Asistan extends Akademisyen{
     public void quizYap(){
         System.out.println(this.getAdSoyad() + " quiz yaptı");
     }
+
+    @Override
+    public void derseGir(String saat){}
 }
