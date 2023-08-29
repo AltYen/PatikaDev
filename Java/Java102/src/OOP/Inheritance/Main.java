@@ -18,10 +18,18 @@ public class Main {
         o1.giris("10:00","18:00");
         o1.derseGir();
         */
-        o1.giris();
 
+        //Polimorfizm
+        // referansı ata sınıfından gösterip, constructorunu alt sınıfından göstererek, nesneler üretebiliriz. buna polimorfizm diyoruz.
+        // Örnek => Calisan a1 = new Akademisyen("Patika Dev","05000000124","bilgi@patika.dev","CENG","Doçent");
+        // yukaridaki örnekte calisan akademisyenin kendi özel şeylerine erişemez. yani a1.getBolum gibi akademisyene ait şeylere erişimi yok. sadece override edilmiş noktalara erişebilir.
+        Calisan[] loginUser = {c1,a1,m1,o1};
+        Calisan.girisYapanlar(loginUser);
+
+        /*
         GuvenlikGorevlisi gg1 = new GuvenlikGorevlisi("Ahmet Hakan","11","asfaf@gmail.com","CENG","12:00-00:00","A1");
         System.out.println(gg1.getMesai());
         gg1.nobet();
+         */
     }
 }

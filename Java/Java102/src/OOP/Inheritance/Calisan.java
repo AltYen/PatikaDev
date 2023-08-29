@@ -39,6 +39,7 @@ public class Calisan {
         System.out.println(this.getAdSoyad() + " üniversiteye giriş yaptı !!");
     }
 
+    /*
     public void giris(String girisSaati){
         System.out.println(this.getAdSoyad() + " " + girisSaati + " saatinde üniversiteye giriş yaptı !!");
     }
@@ -46,11 +47,19 @@ public class Calisan {
         System.out.println(this.getAdSoyad() + " " + girisSaati + " saatinde üniversiteye giriş ve " + cikisSaati + " bu saatte cikis yapacaktir !!");
     }
 
+     */
+
     public void cikis(){
         System.out.println(this.getAdSoyad() + " üniversiteden çıkış yaptı !!");
     }
 
     public void yemekhane(){
         System.out.println(this.getAdSoyad()+ " yemekhaneye girdi !!");
+    }
+
+    public static void girisYapanlar(Calisan[] loginUsers){
+        for(Calisan c:loginUsers){
+            c.giris();
+        }
     }
 }
