@@ -7,6 +7,7 @@ public class ToolStore extends NormalLoc{
 
     @Override
     public boolean onLocation() {
+        System.out.println();
         System.out.println("------------- Mağazaya Hoşgeldiniz ! -------------");
         boolean showMenu = true;
         while(showMenu){
@@ -38,11 +39,13 @@ public class ToolStore extends NormalLoc{
     }
 
     public void printWeapon(){
+        System.out.println();
         System.out.println("---------- Silahlar -------------");
         for(Weapon w: Weapon.weapons()){
             System.out.println(w.getId() + " - " +w.getName() + " < Para : " + w.getPrice() + " , Hasar : " + w.getDamage() + ">");
         }
         System.out.println("0 - Çıkış Yap ");
+        System.out.println();
     }
 
     public void buyWeapon(){
@@ -56,13 +59,16 @@ public class ToolStore extends NormalLoc{
             Weapon selectedWeapon = Weapon.getWeaponObjById(selectWeaponID);
             if(selectedWeapon != null){
                 if(selectedWeapon.getPrice() > this.getPlayer().getMoney()){
+                    System.out.println();
                     System.out.println("Yeterli paranız bulunmamaktadir !");
                 }else{
+                    System.out.println();
                     System.out.println(selectedWeapon.getName() + " silahını satın aldınız !");
                     int balance = this.getPlayer().getMoney() - selectedWeapon.getPrice();
                     this.getPlayer().setMoney(balance);
                     System.out.println("Kalan Paranız : " + this.getPlayer().getMoney());
                     this.getPlayer().getInventory().setWeapon(selectedWeapon);
+                    System.out.println();
 
                 }
             }
@@ -70,11 +76,13 @@ public class ToolStore extends NormalLoc{
     }
 
     public void printArmor(){
+        System.out.println();
         System.out.println("---------- Zırhlar -------------");
         for(Armor a: Armor.armors()){
             System.out.println(a.getId() + " - " +a.getName() + " < Para : " + a.getPrice() + " , Zırh : " + a.getBlock() + ">");
         }
         System.out.println("0 - Çıkış Yap ");
+        System.out.println();
     }
 
     public void buyArmor(){
@@ -89,12 +97,15 @@ public class ToolStore extends NormalLoc{
             Armor selectedArmor = Armor.getArmorObjById(selectArmorID);
             if(selectedArmor != null){
                 if(selectedArmor.getPrice() > this.getPlayer().getMoney()){
+                    System.out.println();
                     System.out.println("Yeterli paranız bulunmamaktadir !");
                 }else{
+                    System.out.println();
                     System.out.println(selectedArmor.getName() + " zırhı satın aldınız !");
                     this.getPlayer().setMoney(this.getPlayer().getMoney() - selectedArmor.getPrice());
                     this.getPlayer().getInventory().setArmor(selectedArmor);
                     System.out.println("Kalan Paranız : " + this.getPlayer().getMoney());
+                    System.out.println();
                 }
             }
         }

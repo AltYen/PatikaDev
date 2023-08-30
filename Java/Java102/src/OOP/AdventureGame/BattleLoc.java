@@ -55,6 +55,10 @@ public abstract class BattleLoc extends Location{
     public boolean combat(int obsNumber){
         Random r = new Random();
         for(int i = 1; i <= obsNumber; i++){
+            if(this.getObstacle().getName().equals("Yılan")){
+                this.setObstacle(new Snake());
+                this.getObstacle().setAward(Snake.snakeReward());
+            }
             this.getObstacle().setHealth(this.getObstacle().getOrijinalHealth());
             playerStats();
             obstacleStats(i);
@@ -86,19 +90,47 @@ public abstract class BattleLoc extends Location{
             }
 
             if(this.getObstacle().getHealth() < this.getPlayer().getHealth()){
+                System.out.println();
                 System.out.println("Düşmanı Yendiniz !");
-                System.out.println(this.getObstacle().getAward() + " para kazandınız !");
-                this.getPlayer().setMoney(this.getPlayer().getMoney() + this.getObstacle().getAward());
-                System.out.println("Güncel Paranız : " + this.getPlayer().getMoney());
+                claimObstacleAward();
             }else{
                 return false;
             }
         }
-        claimAward();
+        claimLocationAward();
         return true;
     }
 
-    public void claimAward(){
+    public void claimObstacleAward(){
+        if(this.getObstacle().getAward() > 0){
+            System.out.println(this.getObstacle().getAward() + " para kazandınız !");
+            this.getPlayer().setMoney(this.getPlayer().getMoney() + this.getObstacle().getAward());
+            System.out.println("Güncel Paranız : " + this.getPlayer().getMoney());
+            System.out.println("---------------");
+        }else{
+            if(this.getObstacle().getAward() >= -6 && this.getObstacle().getAward() <= -4){
+                if(this.getObstacle().getAward() == -6){
+                    this.getPlayer().getInventory().setArmor(Armor.armors()[2]);
+                }else if(this.getObstacle().getAward() == -5){
+                    this.getPlayer().getInventory().setArmor(Armor.armors()[1]);
+                }else if(this.getObstacle().getAward() == -4){
+                    this.getPlayer().getInventory().setArmor(Armor.armors()[0]);
+                }
+                System.out.println("Tebrikler " + this.getPlayer().getInventory().getArmor().getName() + " Zırh kazandın !");
+            }
+            else if(this.getObstacle().getAward() >= -3 && this.getObstacle().getAward() <= -1){
+                if(this.getObstacle().getAward() == -3){
+                    this.getPlayer().getInventory().setWeapon(Weapon.weapons()[2]);
+                }else if(this.getObstacle().getAward() == -2){
+                    this.getPlayer().getInventory().setWeapon(Weapon.weapons()[1]);
+                }if(this.getObstacle().getAward() == -1){
+                    this.getPlayer().getInventory().setWeapon(Weapon.weapons()[0]);
+                }
+                System.out.println("Tebrikler " + this.getPlayer().getInventory().getWeapon().getName() + " kazandın !");
+            }
+        }
+    }
+    public void claimLocationAward(){
         if(this.award.equals("food")){
             this.getPlayer().getInventory().setFood(true);
         }
@@ -134,7 +166,14 @@ public abstract class BattleLoc extends Location{
         System.out.println("---------------------");
         System.out.println("Sağlık : " + this.getObstacle().getHealth());
         System.out.println("Hasar : " + this.getObstacle().getDamage());
-        System.out.println("Ödül : " + this.getObstacle().getAward());
+        if(this.getObstacle().getAward() >= -6 && this.getObstacle().getAward() <= -4)
+            System.out.println("Ödül : Zırh");
+        else if(this.getObstacle().getAward() >= -3 && this.getObstacle().getAward() <= -1)
+            System.out.println("Ödül : Silah");
+        else if(this.getObstacle().getAward() == 0){
+            System.out.println("Ödül : Yok");
+        }else
+            System.out.println("Ödül : " + this.getObstacle().getAward());
         System.out.println();
     }
 

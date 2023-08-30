@@ -18,7 +18,10 @@ public class Game {
         boolean isAllAwardClaimed = false;
 
         while(true){
+            System.out.println();
+            System.out.println("----------------");
             player.printInfo();
+            System.out.println("----------------");
             System.out.println();
             System.out.println("######## Bölgeler ########");
             System.out.println();
@@ -27,6 +30,7 @@ public class Game {
             System.out.println("3- Mağara --> Ödül : <Yemek>, dikkatli ol zombi çıkabilir !");
             System.out.println("4- Orman --> Ödül : <Odun>, dikkatli ol vampir çıkabilir !");
             System.out.println("5- Nehir --> Ödül : <Su>, dikkatli ol ayı çıkabilir !");
+            System.out.println("6- Maden --> Ödül : <Silah> || <Zırh> || <Para>, dikkatli ol yılan çıkabilir !");
             System.out.println("0- Çıkış Yap --> Oyunu Sonlandır");
             System.out.print("Lütfen gitmek istediğiniz bölgeyi seçiniz: ");
             int selectLoc = input.nextInt();
@@ -46,24 +50,27 @@ public class Game {
                     break;
                 case 3:
                     if(player.getInventory().isFood()){
-                        System.out.println("Bu bölgeyi zaten temizleyip, ödülü aldın !");
+                        System.out.println("\nBu bölgeyi zaten temizleyip, ödülü aldın !");
                         continue;
                     }
                     location = new Cave(player);
                     break;
                 case 4:
                     if(player.getInventory().isFirewood()){
-                        System.out.println("Bu bölgeyi zaten temizleyip, ödülü aldın !");
+                        System.out.println("\nBu bölgeyi zaten temizleyip, ödülü aldın !");
                         continue;
                     }
                     location = new Forest(player);
                     break;
                 case 5:
                     if(player.getInventory().isWater()){
-                        System.out.println("Bu bölgeyi zaten temizleyip, ödülü aldın !");
+                        System.out.println("\nBu bölgeyi zaten temizleyip, ödülü aldın !");
                         continue;
                     }
                     location = new River(player);
+                    break;
+                case 6:
+                    location = new Mine(player);
                     break;
                 default:
                     System.out.println("Lütfen geçerli bir bölge giriniz !");
