@@ -34,31 +34,54 @@ public abstract class BattleLoc extends Location{
         return true;
     }
 
+    public void userHit(){
+        System.out.println();
+        System.out.println("siz vurdunuz !");
+        this.getObstacle().setHealth(this.getObstacle().getHealth()-this.getPlayer().getTotalDamage());
+        afterHit();
+    }
+
+    public void obstacleHit(){
+        System.out.println();
+        System.out.println("Canavar size vurdu !");
+        int obstacleDamage = this.getObstacle().getDamage() - this.getPlayer().getInventory().getArmor().getBlock();
+        if(obstacleDamage < 0){
+            obstacleDamage = 0;
+        }
+        this.getPlayer().setHealth(this.getPlayer().getHealth() - obstacleDamage);
+        afterHit();
+    }
+
     public boolean combat(int obsNumber){
+        Random r = new Random();
         for(int i = 1; i <= obsNumber; i++){
             this.getObstacle().setHealth(this.getObstacle().getOrijinalHealth());
             playerStats();
             obstacleStats(i);
+            boolean isUserFirstAttack = r.nextBoolean();
             while(this.getPlayer().getHealth() > 0 && this.getObstacle().getHealth() > 0){
-                System.out.print("<V>ur veya <K>aç : ");
-                String selectCombat = input.nextLine().toUpperCase();
-                if(selectCombat.equals("V")){
-                    System.out.println();
-                    System.out.println("siz vurdunuz !");
-                    this.getObstacle().setHealth(this.getObstacle().getHealth()-this.getPlayer().getTotalDamage());
-                    afterHit();
-                    if(this.getObstacle().getHealth() > 0){
-                        System.out.println();
-                        System.out.println("Canavar size vurdu !");
-                        int obstacleDamage = this.getObstacle().getDamage() - this.getPlayer().getInventory().getArmor().getBlock();
-                        if(obstacleDamage < 0){
-                            obstacleDamage = 0;
+                if(isUserFirstAttack){
+                    System.out.print("<V>ur veya <K>aç : ");
+                    String selectCombat = input.next().toUpperCase();
+                    if(selectCombat.equals("V")){
+                        userHit();
+                        if(this.getObstacle().getHealth() > 0){
+                            obstacleHit();
                         }
-                        this.getPlayer().setHealth(this.getPlayer().getHealth() - obstacleDamage);
-                        afterHit();
+                    }else{
+                        return false;
                     }
                 }else{
-                    return false;
+                    obstacleHit();
+                    if(this.getPlayer().getHealth() > 0){
+                        System.out.print("<V>ur veya <K>aç : ");
+                        String selectCombat = input.next().toUpperCase();
+                        if(selectCombat.equals("V")){
+                           userHit();
+                        }else{
+                            return false;
+                        }
+                    }
                 }
             }
 
