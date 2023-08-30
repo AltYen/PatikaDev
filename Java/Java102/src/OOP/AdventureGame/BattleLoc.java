@@ -71,7 +71,20 @@ public abstract class BattleLoc extends Location{
                 return false;
             }
         }
+        claimAward();
         return true;
+    }
+
+    public void claimAward(){
+        if(this.award.equals("food")){
+            this.getPlayer().getInventory().setFood(true);
+        }
+        else if(this.award.equals("water")){
+            this.getPlayer().getInventory().setWater(true);
+        }
+        else if(this.award.equals("firewood")){
+            this.getPlayer().getInventory().setFirewood(true);
+        }
     }
 
     public void afterHit(){

@@ -15,6 +15,7 @@ public class Game {
         player.selectChar();
 
         Location location=null;
+        boolean isAllAwardClaimed = false;
 
         while(true){
             player.printInfo();
@@ -34,22 +35,42 @@ public class Game {
                     location = null;
                     break;
                 case 1:
+                    if(player.getInventory().isWater() && player.getInventory().isFood() && player.getInventory().isFirewood()){
+                        isAllAwardClaimed = true;
+                        break;
+                    }
                     location = new SafeHouse(player); //buradaki this üretilen Player nesnesini kastediyor.
                     break;
                 case 2:
                     location = new ToolStore(player);
                     break;
                 case 3:
+                    if(player.getInventory().isFood()){
+                        System.out.println("Bu bölgeyi zaten temizleyip, ödülü aldın !");
+                        continue;
+                    }
                     location = new Cave(player);
                     break;
                 case 4:
+                    if(player.getInventory().isFirewood()){
+                        System.out.println("Bu bölgeyi zaten temizleyip, ödülü aldın !");
+                        continue;
+                    }
                     location = new Forest(player);
                     break;
                 case 5:
+                    if(player.getInventory().isWater()){
+                        System.out.println("Bu bölgeyi zaten temizleyip, ödülü aldın !");
+                        continue;
+                    }
                     location = new River(player);
                     break;
                 default:
                     System.out.println("Lütfen geçerli bir bölge giriniz !");
+            }
+            if(isAllAwardClaimed){
+                System.out.println(player.getName() + " Tebrikler Oyunu Kazandın!");
+                break;
             }
             if(location == null){
                 System.out.println("Bu karanlık ve sisli adadan çabuk vazgeçtin !");
