@@ -55,10 +55,6 @@ public abstract class BattleLoc extends Location{
     public boolean combat(int obsNumber){
         Random r = new Random();
         for(int i = 1; i <= obsNumber; i++){
-            if(this.getObstacle().getName().equals("Yılan")){
-                this.setObstacle(new Snake());
-                this.getObstacle().setAward(Snake.snakeReward());
-            }
             this.getObstacle().setHealth(this.getObstacle().getOrijinalHealth());
             playerStats();
             obstacleStats(i);
@@ -93,6 +89,9 @@ public abstract class BattleLoc extends Location{
                 System.out.println();
                 System.out.println("Düşmanı Yendiniz !");
                 claimObstacleAward();
+                if(this.getObstacle().getName().equals("Yılan")){
+                    this.setObstacle(new Snake());
+                }
             }else{
                 return false;
             }

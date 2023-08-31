@@ -7,6 +7,7 @@ public class Snake extends Obstacle{
     public Snake() {
         super(4, "Yılan", 0, 12,0);
         this.setDamage(3 + r.nextInt(4));
+        this.setAward(snakeReward());
     }
 
     public static int snakeReward(){
