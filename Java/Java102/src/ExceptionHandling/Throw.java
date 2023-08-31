@@ -3,9 +3,9 @@ package ExceptionHandling;
 import java.util.Scanner;
 
 public class Throw {
-    public static void checkAge(int age) throws Exception {
+    public static void checkAge(int age) throws AgeCheckException {
         if(age<18){
-            throw new Exception("Yaşınız Tutmuyor"); // altındaki kod blokları çalışmaz
+            throw new AgeCheckException("Yaş hatası alındı"); // altındaki kod blokları çalışmaz
         }
         System.out.println("Yaşı Uygundur !");
     }
@@ -15,7 +15,7 @@ public class Throw {
         int age = input.nextInt();
         try {
             checkAge(age);
-        }catch (Exception e){
+        }catch (AgeCheckException e){
             System.out.println("Yaşı uymadı!");
             System.out.println(e.toString());
         }
